@@ -1,7 +1,8 @@
 // Inizializzazione Supabase ritardata o protetta
 let supabase;
 
-document.addEventListener('DOMContentLoaded', () => {
+// Poiché lo script è a fine body, eseguiamo subito la logica
+(function initApp() {
     const splashScreen = document.getElementById('splash-screen');
     const mainContent = document.getElementById('main-content');
     
@@ -106,4 +107,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-});
+})();
