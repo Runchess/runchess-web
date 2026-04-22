@@ -1,10 +1,19 @@
+console.log("script.js - Inizio caricamento file");
+
 // Inizializzazione Supabase ritardata o protetta
 let supabase;
 
+console.log("script.js - Inizio initApp");
+
 // Poiché lo script è a fine body, eseguiamo subito la logica
-(function initApp() {
-    const splashScreen = document.getElementById('splash-screen');
-    const mainContent = document.getElementById('main-content');
+const splashScreen = document.getElementById('splash-screen');
+const mainContent = document.getElementById('main-content');
+
+if (splashScreen) {
+    console.log("script.js - Trovato splash-screen, imposto il timeout");
+} else {
+    console.error("script.js - ERRORE: splash-screen NON trovato!");
+}
     
     // Attendi 2500 millisecondi per lo splash screen
     setTimeout(() => {
@@ -107,4 +116,3 @@ let supabase;
             }
         });
     }
-})();
