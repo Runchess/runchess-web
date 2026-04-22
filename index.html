@@ -13,7 +13,7 @@
 </head>
 <body>
     <!-- SPLASH SCREEN -->
-    <div id="splash-screen">
+    <div id="splash-screen" onclick="this.style.display='none'; document.getElementById('main-content').style.display='flex';">
         <div class="content">
             <!-- LOGO TESTUALE -->
             <h1 class="logo">RunChess</h1>
@@ -51,5 +51,17 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        // Fallback estremo se script.js fallisce o non carica
+        setTimeout(() => {
+            const s = document.getElementById('splash-screen');
+            const m = document.getElementById('main-content');
+            if (s && s.style.display !== 'none') {
+                console.log('FALLBACK: Rimuovo splash screen');
+                s.style.display = 'none';
+                if(m) m.style.display = 'flex';
+            }
+        }, 3000);
+    </script>
 </body>
 </html>
