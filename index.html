@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RunChess Web</title>
+    <!-- Import Google Fonts: 'Bebas Neue', 'DM Sans', 'DM Mono' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen">
+        <div class="content">
+            <!-- LOGO TESTUALE -->
+            <h1 class="logo">RunChess</h1>
+            
+            <!-- BINARIO ANIMATO -->
+            <div class="track-outer">
+                <div class="track-inner">
+                    <div class="checkered-bg"></div>
+                    <div class="comet"></div>
+                </div>
+            </div>
+
+            <!-- TAGLINE -->
+            <h2 class="subtitle">the first mental & metabolic biathlon</h2>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT (LANDING PAGE) -->
+    <div id="main-content">
+        <div class="hero-section">
+            <div class="hero-text">
+                <h1>RUN. THINK. WIN.</h1>
+                <p>The first mental & metabolic biathlon.</p>
+                <form id="waitlist-form" class="waitlist-form">
+                    <input type="email" id="email-input" placeholder="La tua email..." required>
+                    <button type="submit" class="cta-button">Join the Waitlist</button>
+                </form>
+                <p id="live-counter" style="color: #8FA8C0; font-family: 'DM Mono'; font-size: 0.9rem; margin-top: 10px;">Atleti iscritti: <span id="count">...</span></p>
+                <p id="form-message" style="display: none; font-family: 'DM Mono'; font-size: 0.9rem; margin-top: 5px; color: var(--neon-green);"></p>
+            </div>
+            <div class="hero-image">
+                <img src="images/Screenshot_20260421_094204.jpg" alt="RunChess App Gameplay">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
