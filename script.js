@@ -1,7 +1,7 @@
 console.log("script.js - Inizio caricamento file");
 
 // Inizializzazione Supabase ritardata o protetta
-let supabase;
+let supabaseClient;
 
 console.log("script.js - Inizio initApp");
 
@@ -31,9 +31,9 @@ if (splashScreen) {
     // --- LOGICA SUPABASE ---
     try {
         const supabaseUrl = 'https://jkutiliijqlintgevfho.supabase.co';
-        const supabaseKey = 'sb_publishable_LrPZbxur2A4cakSvTbwkgA_cIygcsY5';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImprdXRpbGlpanFsaW50Z2V2ZmhvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ5NjYwMjQsImV4cCI6MjA5MDU0MjAyNH0.U7zk_9pKyvfonzC0_RtT8pg6pzRcvRWdPJU-ffzwmDI';
         if (window.supabase) {
-            supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+            supabaseClient = window.supabase.createClient(supabaseUrl, supabaseKey);
         } else {
             console.warn('Supabase non è stato caricato correttamente.');
         }
@@ -44,9 +44,9 @@ if (splashScreen) {
     // 1. Lettura Live: Aggiorna il contatore
     const countSpan = document.getElementById('count');
     const updateCounter = async () => {
-        if (!supabase) return;
+        if (!supabaseClient) return;
         try {
-            const { count, error } = await supabase
+            const { count, error } = await supabaseClient
                 .from('waitlist_users')
                 .select('*', { count: 'exact', head: true });
             
@@ -77,7 +77,7 @@ if (splashScreen) {
             btn.textContent = 'Invio...';
             formMessage.style.display = 'none';
 
-            if (!supabase) {
+            if (!supabaseClient) {
                 formMessage.textContent = 'Errore di connessione (Supabase non caricato).';
                 formMessage.style.color = '#FF1744';
                 formMessage.style.display = 'block';
@@ -87,7 +87,7 @@ if (splashScreen) {
             }
 
             try {
-                const { error } = await supabase
+                const { error } = await supabaseClient
                     .from('waitlist_users')
                     .insert([{ email }]);
 
